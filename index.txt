@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>NSFW Detection • Final Year Project</title>
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="brand">
+        <div class="logo">AI</div>
+        <div>
+          <h1>NSFW Image Detection</h1>
+          <p>Context-Aware + Explainable (Grad-CAM)</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="card">
+      <h2>Upload an Image</h2>
+      <p class="muted">Supported formats: JPG, PNG, BMP, GIF</p>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="alert">{{ messages[0] }}</div>
+        {% endif %}
+      {% endwith %}
+
+      <form action="/predict" method="post" enctype="multipart/form-data">
+        <div class="drop">
+          <input type="file" name="image" accept="image/*" required>
+        </div>
+        <button class="btn" type="submit">Analyze</button>
+      </form>
+    </main>
+
+    <footer class="foot">
+      <span>© 2026 • Final Year Project</span>
+    </footer>
+  </div>
+</body>
+</html>
